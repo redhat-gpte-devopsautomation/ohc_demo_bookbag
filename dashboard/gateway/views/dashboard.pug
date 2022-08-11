@@ -466,17 +466,7 @@ html
                 var style = '<style>a { pointer-events: none }</style>';
                 $(this).contents().find('head').append(style);
             });
-            ('#app-tab').on('click', function (e) {
+            $('#app-tab').on('click', function (e) {
+                $("#app-iframe")[0].focus();
                 $("#app-iframe")[0].contentWindow.focus();
             });
-            $("#app-iframe").mouseover(function() {
-                if(isSafari()) {
-                    $("#app-iframe")[0].focus();
-                    $("#app-iframe")[0].contentWindow.focus();
-                }
-            });
-
-            function isSafari() {
-                var ua = navigator.userAgent.toLowerCase();
-                return ((ua.indexOf('safari') != -1) && (ua.indexOf('chrome') === -1));
-            }
