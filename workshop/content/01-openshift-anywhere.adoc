@@ -1,6 +1,9 @@
+:guid: %guid%
+:ocp_username: %ocp_username%
+
 == Script for Segment 1 Part 1
 
-Hi, I'm Judd Maltin, Principal Architect in Portfolio Technology.
+Hi, I'm Judd Maltin, Principal Architect `{ocp_username}` in Portfolio Technology.
 
 In this demo we're going to do the installation of the OpenShift Container Platform to act as a basis for a new OCP fleet across cloud provders.  Coming soon, we'll be establishing this basis on-premises with VMware Vsphere as the virtual infrastructure.
 
@@ -35,7 +38,7 @@ It was produced by running our first command:
 +
 [source,bash]
 ----
-# openshift-install create install-config --dir $HOME/cluster-${GUID}
+# openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
 
 and answering some basic questions about the environment.
@@ -56,7 +59,7 @@ So this second step your're just going to run the OpenShift installer,
 +
 [source,bash]
 ----
-# ./openshift-install create manifests --dir $HOME/cluster${GUID}
+# ./openshift-install create manifests --dir $HOME/cluster-{guid}
 ----
 
 * openshift-install create ignition configs
@@ -64,7 +67,7 @@ So this second step your're just going to run the OpenShift installer,
 +
 [source,bash]
 ----
-# ./openshift-install create ignition-configs --dir $HOME/cluster${GUID}
+# ./openshift-install create ignition-configs --dir $HOME/cluster-{guid}
 ----
 
 And what that will do is create some ignition files.
@@ -82,7 +85,7 @@ I run
 +
 [source,bash]
 ----
-# openshift-install create cluster --dir $HOME/cluster-${GUID}
+# openshift-install create cluster --dir $HOME/cluster-{guid}
 ----
 
 All I do is really just wait.
