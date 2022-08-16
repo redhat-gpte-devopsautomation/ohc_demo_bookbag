@@ -57,8 +57,7 @@ There's a couple of commands you need to run to deploy as User Provisioned Infra
 
 So this second step your're just going to run the OpenShift installer,
 
-+
-[source,bash]
+[source, subs="attributes", bash]
 ----
 # ./openshift-install create manifests --dir $HOME/cluster-{guid}
 ----
@@ -66,7 +65,7 @@ So this second step your're just going to run the OpenShift installer,
 * openshift-install create ignition configs
 
 +
-[source,bash]
+[source, subs="attributes", bash]
 ----
 # ./openshift-install create ignition-configs --dir $HOME/cluster-{guid}
 ----
@@ -84,7 +83,7 @@ The nice thing is, once this is done, once I've set this ignition config and run
 I run
 
 +
-[source,bash]
+[source, subs="attributes", bash]
 ----
 # openshift-install create cluster --dir $HOME/cluster-{guid}
 ----
