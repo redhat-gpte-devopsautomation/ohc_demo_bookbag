@@ -34,11 +34,13 @@ You're going to notice a few things.
 
 I have them install config dot YAML file here.
 It was produced by running our first command:
++
+{guid}
 
 +
 [source,bash]
 ----
-# openshift-install create install-config --dir $HOME/cluster-{guid}
+openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
 
 and answering some basic questions about the environment.
