@@ -36,9 +36,10 @@ I have them install config dot YAML file here.
 It was produced by running our first command:
 
 
-[source,bash]
+
+[source, subs="attributes", bash]
 ----
-openshift-install create install-config --dir $HOME/cluster- {guid}
+openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
 
 and answering some basic questions about the environment.
