@@ -34,6 +34,10 @@ RUN sed -i "/wait ${proxy_pid}/i if [ -n \"\$VIEW_ONLY\" ]; then sed -i \"s/UI.r
 
 RUN sed -i "/wait ${proxy_pid}/i if [ -n \"\$RECONNECT\" ]; then sed -i \"s/'reconnect', false/'reconnect', '\$RECONNECT'/\" /root/noVNC/app/ui.js; fi" /root/noVNC/utils/novnc_proxy
 
+RUN sed -i "/wait ${proxy_pid}/i if [ -n \"\$RESIZE\" ]; then sed -i \"s/UI.initSetting('reconnect_delay', 5000);/UI.initSetting('reconnect_delay', 5000); UI.initSetting('resize', '\$RESIZE');/\" /root/noVNC/app/ui.js; fi" /root/noVNC/utils/novnc_proxy
+
+
+
 EXPOSE 6080
 
 ENTRYPOINT [ "bash", "-c", "/root/noVNC/utils/novnc_proxy --vnc ${VNC_SERVER}" ]
