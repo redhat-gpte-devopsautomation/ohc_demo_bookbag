@@ -61,6 +61,10 @@ So this second step your're just going to run the OpenShift installer,
 ----
 # ./openshift-install create manifests --dir $HOME/cluster-{guid}
 ----
++
+++++
+<a href="#" onclick="parent.send_to_terminal('./openshift-install create manifests --dir $HOME/cluster-{guid}', 1); return false;">Execute</a>
+++++
 
 * openshift-install create ignition configs
 
