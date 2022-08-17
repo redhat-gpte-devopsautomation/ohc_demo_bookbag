@@ -1,0 +1,189 @@
+Hi, I'm Judd Maltin, Principal Architect with Red Hat.
+
+In this video we're going to cover a few short, but very compelling topics.
+
+First, we'll give an overview of the Cloud based servicesd tha Red Hat offers.
+
+We'll then dive into some of the tooling and how it's designed to be very familiar to cloud engineers throughout the industry
+
+We'll then look at how deeply integrated our products are with the hyperscaler by looking at how billing and accounting works.
+
+Then we'll accentuate the consistency of REd Hat OpenShift across infrastructures by easily and quickly deploying applications across different infrastructures.
+
+Finally, we'll wrap things up with a word about our SRE team.
+
+So, let's get start.
+
+********************
+* slide 1 - work with cloud providers
+********************
+Red Hat Cloud services is divided into three different segments, platform, application and data services.
+
+Platform services are OpenShift Dedicated, Rosa, ARO and managed OpenShift.
+
+Application services are our API Management Kafka and service strategy projects with her via higher or dev level layers of abstraction for our customers to build new applications and modernize existing applications.
+
+
+And finally data services, roads and Rohde wishes are data science and data access broker products, respectively.
+
+- We sell with your cloud provider
+  - Cloud Providers might be your salesperson and front line support
+  - it's single bill makes it super, super easy for procurement.
+
+- AWS
+  - ROSA
+    - Transact through AWS
+    - Developer Experience
+
+********************
+* slide 2 - ROSA
+********************
+
+And so let's talk about Rosa, which is Red Hat OpenShift service on AWS.
+This is our native first-party service that exist on AWS that you can buy with and transact through Amazon, through the console.  Rosa is specifically a Cloud native experience that Cloud Engineers understand.
+You get the full OpenShift experience that developers and operators love, and you get it in Amazon, easier than you've ever had before.
+
+And this is important, one of the greatest value propositions of OpenShift is that there's a consistent experience, really no matter where you run, for infrastructure in this example
+We are abstracting away the underlying complexity of the Cloud providers and even hybrid on-prem infrastructure.
+
+If you lead a bunch of development teams and one of the most expensive things that a deal with is having different teams really focusing on different environments or stacks.
+And so they really weren't exchangeable with each other.
+Rosa allows me to have a consistent experience no matter where you are.
+
+********************
+* go to terminal SLIDE
+********************
+
+- ROSA and EKS experiences are nearly identitcal and very desired by existing cloud customers - but when you use EKS, you only the basic kubernetes.  When you use ROSA you get all of OpenShift.
+
+now lets walk through what Rosa self-service install looks like, in comparison to using AWS's EKS.
+
+The AWS CLI to deploy AWS's Elastic Kubernetes Service is what most Amazon users and administrators use to configure their environment, etc.
+These are the behaviors that are that these cloud providers are trained or customers on.
+
+While using Rosa and EKS looks very much the same, OpenShift is a complete application platform, and EKS is basic Kubernetes
+I want to show you how similar these experiences are.
+You're not going to have to learn a whole lot of new stuff or are really not a whole lot of new processes to get your clusters deployed
+
+********************
+* go to terminal
+********************
+
+This is our command line.
+And the first thing I'm gonna do is I'm going to log into amazon .
+
++
+[source,bash]
+----
+# openshift-install clsuter is set to us-west-2
+# rosa aws profile region is set to us-west-2
+rosa create cluster -c demo1rosa --profile rosa
+rosa logs install -c demo1rosa --watch
+rosa describe cluster -c demo1rosa
+----
+
+this will take about 30 minutes and by the time this is done, I'll have a full OpenShift cluster.
+
+so let's see what the experience was like for another service on Amazon, specifically EKS,
+using the same AWS credentials you can immeidately begin using EKS.
+
++
+[source,bash]
+----
+eksctl get cluster # uses def--region us-west-1
+eksctl create cluster --name demo1eks # rosa uses different creds, more quota
+----
+
++
+[source,bash]
+----
+[dev-admin@bastion ~]$ eksctl get cluster --region us-west-1
+No clusters found
+[dev-admin@bastion ~]$ eksctl create cluster --name demo1eks
+2022-08-11 03:02:36 [ℹ]  eksctl version 0.107.0
+2022-08-11 03:02:36 [ℹ]  using region us-west-1
+2022-08-11 03:02:36 [ℹ]  setting availability zones to [us-west-1a us-west-1b]
+...
+----
+
+********************
+* go to slides about cost
+********************
+
+- Let's take a look at the cost here:
+On the left you can see your ROSA clusters appearing on your AWS bill, simplifying your accounting.
+
+ALSO, on the left, you can see how we provide detailed breakdowns of what parts of ROSA are costing you money.
+
+********************
+* go to cost management gui
+********************
+
+Here, in When we attach our console.redhat.com services to your AWS account, you can drill down to the per-project and per-user consumption.
+Now, as we track actual resource consumption in OpenShift, and it's broken down by project and application, you can see how much you're spending on idle resources and take action to reallocate in order to make the best use of your spend.
+
+********************
+* go to ACM and deploy same app on two clouds
+********************
+
+You get the same consistent OpenShift experience no matter what infrastructure you deploy on.  You can deploy on a cloud, as a managed service, or in your own datacenter - your management tools will be the same.
+
+The value proposition of OpenShift is that we unlock the power of containers and Kubernetes while hiding their complexity, which includes the underlying infrastructure.
+
+In this example we'll to deploy an application across two different clouds - AWS and Azure
+
+I will add a label.
+
++
+[source,bash]
+----
+app=pacman
+----
+
+And there is an application catalog that, that's associated with.
+So that's an azure cluster.
+And I'll just add one to one of my Rosa clusters.
+
+
+Now if I look at the application catalog here, I will go find that pacman application.
+And here you see the architecture or the topology of that application.
+
+Just to prove to you that this was not some sort of slide where vapor, I will now show you that, hey, I'm actually running.
+So this is that application running on Azure and use that exact same application running on Rosa.
+Totally awesome, consistent experience.
+
+
+If I had multiple teams out there working on this, one wouldn't have to be trained on Azure another one won't have to be trained and an amine Amazon, again, openshift just is just a lock step for them and locks the power of technology is like container and kube To get your applications out there as quickly as possible, I get while hiding the underlying complexity.
+
+********************
+* final slide
+********************
+
+We'll close with something that is super important to understand.
+And that is the Red Hat Site Reliability Engineering or SRE team.
+
+These are experts that manage our Cloud and managed OpenShift services  behind the scenes
+
+There's no one better out there to operate  Red Hat Cloud services and Red Hat Software than red hatters themselves,
+
+this a set of product engineers, and systems engineers, and They become a virtual team member of your operations and SRE teams.
+
+This is super important in terms of lowering the total cost of ownership.
+SO that you can focus the resources on what really matters.
+And that's delivering applications.
+
+This is the say that with our SRE team, we're enabling you with the resiliency of the platform.
+We continuous uptime to move from 24, 7 operations to 95% innovations.
+And that 95 innovations, which is helping you deliver applications to production
+
+So, to sum up:
+
+What we saw just now was
+* an overview of the Cloud Services Red Hat offers
+* details and a demo of how the tools that drive our cloud offerings work-alike to the tools your staff are already accusomted to
+* the billing integration and cost management tools Red Hat offers
+* the consistent infrastructure and application deployment and management system across infrastructures
+* and finally a word about how our SRE team become a part of your team
+
+Thanks so much for watching our video - we hope this was valuable to you.
+ Thank you

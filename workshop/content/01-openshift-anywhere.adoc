@@ -1,0 +1,180 @@
+:guid: %guid%
+:ocp_username: %ocp_username%
+
+== Script for Segment 1 Part 1
+
+Hi, I'm Judd Maltin, Principal Architect `{ocp_username}` in Portfolio Technology.
+
+In this demo we're going to do the installation of the OpenShift Container Platform to act as a basis for a new OCP fleet across cloud provders.  Coming soon, we'll be establishing this basis on-premises with VMware Vsphere as the virtual infrastructure.
+
+We'll start with deploying a user provisioned infrastructure by hand from the command line, and add Advanced Cluster Manager to that UPI on-premises cluster.
+Then we'll use ACM to deploy installer provisioned infrastructure in AWS.
+
+In the next video we'll get into the managed OpenShift services.
+
+Before we dive in, I do want to point out we do have full stack automation using IPI on the left, which is kind of an opinionated best practices for cluster provisioning.
+
+Although the majority of our installation is actually still follow a preexisting infrastructure, the box in the middle.
+
+When you get into a data center there's a lot of existing, very heterogeneous infrastructure, hardware, networking and those sorts of things that need to be supported.
+
+And so we need to meet customers where they are today in their infrastructure and be able to support that with user provision infrastructure.
+
+And then you could see all the hosted offerings on the right, which we'll go into in further demos.
+
+---
+
+So with that, let's go over to the pre-existing infrastructure installation.
+
+We're going to start where most of our sysadmins, an OpenShift admins will be familiar, and that is at the command line.
+
+So I have a environment here, a Linux shell
+I want to show you what it looks like to actually deploy via UPI, user provision infrastructure.
+You're going to notice a few things.
+
+I have them install config dot YAML file here.
+It was produced by running our first command:
+
+
+
+[source, subs="attributes", bash]
+----
+openshift-install create install-config --dir $HOME/cluster-{guid}
+----
+
+and answering some basic questions about the environment.
+It's also available in rich detail in the OpenShift documentation, for all the many infrastructures we support.
+This is really the majority of what the installation gets powered off of.
+So this install config YAML file had some details in it.
+
+This is probably the most challenging part to setup is this install config YAML file and get it correct.
+You need to talk to various teams like in this case, we're deploying on AWS, your administrators, your networking team, your DNS team, and so on to understand and coordinate with them what you can use inside those environments to deploy your OpenShift cluster.
+
+---
+
+Once I have that instal config, it's pretty straightforward.
+There's a couple of commands you need to run to deploy as User Provisioned Infrastructure
+
+So this second step your're just going to run the OpenShift installer,
+
+[source, subs="attributes", bash]
+----
+# ./openshift-install create manifests --dir $HOME/cluster-{guid}
+----
+
+* openshift-install create ignition configs
+
++
+[source, subs="attributes", bash]
+----
+# ./openshift-install create ignition-configs --dir $HOME/cluster-{guid}
+----
+
+And what that will do is create some ignition files.
+See a master ignition file, a Bootstrap and worker ignitioon file.
+These ignition files will be delieverd by the installer to the VMs.
+
+When the aws instances are powered on, the OS network is configured correctly, and the VMs find the files and actually feeds the information necessary to those machines to be installed properly, to be part of this cluster.
+
+The nice thing is, once this is done, once I've set this ignition config and run the next installer step.
+
+---
+
+I run
+
++
+[source, subs="attributes", bash]
+----
+# openshift-install create cluster --dir $HOME/cluster-{guid}
+----
+
+All I do is really just wait.
+
+this OpenShift installer will Wait for Bootstrap to complete, and this'll just wait until that API is available, and then output the information we need to access the cluster.
+
+It takes roughly 20 minutes for this to complete.
+
+---
+
+Rather than wait for that, this other window here, we have the output from another installation when complete.
+
+So you can see here, it's given you credentials and URLs to access the cluster.
+
+Just copy the paste the URL, and login with the credentials, and you're in the Web Console.
+
+And you can see, if I go to the administrator persona, this cluster is now running, and was deployed by a user provision infrastructure.
+
+As we we're showing in our demo, we want to make this a RHACM hub cluster so we can deploy subsequent clusters.
+
+We can deploy subsequent clusters using ACM by IPI makes it much easier.
+
+---
+
+To install RHACM on thsi cluster, you can just go to Operator hub, click on Advanced cluster management kubernetes and install this operator.
+
+And this will take about two to three minutes install.
+
+Once it's installed, then it'll become a hub cluster that can be used to deploy additional clusters.
+
+---
+
+For the sake of the demo, let me go ahead and just go into another RHACM that's ready.
+
+If I go to ACM, you'll notice that when you come in you get the dashboard view.
+
+This is advanced cluster management.
+
+You'll go to the clusters menu on the left-hand side here.
+And you can actually create a new cluster straight from here.
+So once you have OpenShift deployed by UPI, made that a hub cluster, you go into Advanced cluster management.
+You can begin creating clusters straight from here.
+
+---
+
+First you should validate that we have credentials for AWS.
+And yes, they're set up.
+
+---
+So I'll go ahead and hit Create cluster.
+In this case, I'm going to use AWS.
+Let's go ahead and select the AWS infrastructure provider.
+We'll call this New York.
+
+If wanted to, I could add this to a cluster set.
+ClusterSets are basically just a grouping for management purposes and ACM.
+
+I'm going to select the latest release.
+
+I'm not going to do single node OpenShift today.
+
+Under node pools, I can customize the sizes and the accounts of my control of my worker nodes as well as their memory and CPU cores sockets, all that stuff.
+
+I'm going to leave those as is.
+
+You need the API that, that's the virtual IP address that the cluster will communicate over.
+
+And that's the Ingress virtual IP address for traffic.
+
+I'm not going to use a proxy.
+
+If I wanted to, I could extend this installation with ansible templates.
+That is, if there's something outside of the installer, outside of IPI, the installer provision infrastructure flow that I want to do, update a CMDB, send an e-mail integrated service, something of that sort.
+I could use Ansible to do that.
+
+And then I can simply review this and then hit Create.
+
+---
+
+Before I hit Create, I just want to point out all of this is actually see this all in YAML as well, here on the right hand side.
+
+So if you wanted to edit this, copy and paste them and reproduce these configurations, you could do so relatively easily,
+
+You'll hit Create.
+
+And this will kick off and begin deploying our cluster.
+So you've got the view here.
+But hopefully that gives you a good idea of how you can deploy clusters using UPI, an IPI.
+
+That completes this demonstration.
+
+In the next demonstration, we're going to walk you through the deployment of an actual Red Hat OpenShift service on Amazon Web Services, comparing ROSA - Red Hat OpenShift on AWS, and EKS, the AWS provided Kubernetes infrastructure.
