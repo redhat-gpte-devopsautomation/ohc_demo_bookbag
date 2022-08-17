@@ -43,7 +43,7 @@ openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
 [subs=attributes]
 ++++
-<a href="#" onclick="parent.send_to_terminal('openshift-install create install-config --dir $HOME/cluster-{guid}', 1); return false;">Execute</a>
+<a href="#" onclick="parent.send_to_terminal('openshift-install create install-config --dir $HOME/cluster-{guid}', 1); return false;">Run it!</a>
 ++++
 
 and answering some basic questions about the environment.
@@ -67,7 +67,7 @@ So this second step your're just going to run the OpenShift installer,
 ----
 [subs=attributes]
 ++++
-<a href="#" onclick="parent.send_to_terminal('./openshift-install create manifests --dir $HOME/cluster-{guid}', 1); return false;">Execute</a>
+<a href="#" onclick="parent.send_to_terminal('./openshift-install create manifests --dir $HOME/cluster-{guid}', 1); return false;">Run it!</a>
 ++++
 
 * openshift-install create ignition configs
