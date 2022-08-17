@@ -1,8 +1,0 @@
----
-modules:
-  01-openshift-anywhere:
-    name: 01 Openshift Anywhere
-    exit_sign: 02 Openshift Anywhere
-  02-openshift-anywhere:
-    name: 02 Openshift Anywhere
-    exit_sign: Finish Workshop

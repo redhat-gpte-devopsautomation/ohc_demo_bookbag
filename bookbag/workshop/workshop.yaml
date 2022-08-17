@@ -1,6 +1,0 @@
----
-name: Open Hybrid Cloud Demo
-modules:
-  activate:
-    - 01-openshift-anywhere
-    - 02-openshift-anywhere
