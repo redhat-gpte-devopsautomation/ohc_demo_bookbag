@@ -41,6 +41,10 @@ It was produced by running our first command:
 ----
 openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
+[subs=attributes]
+++++
+<a href="#" onclick="parent.send_to_terminal('openshift-install create install-config --dir $HOME/cluster-{guid}', 1); return false;">Execute</a>
+++++
 
 and answering some basic questions about the environment.
 It's also available in rich detail in the OpenShift documentation, for all the many infrastructures we support.
