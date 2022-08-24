@@ -1,3 +1,12 @@
+:guid: %guid%
+:ocp_username: %ocp_username%
+:openshift_console_url: %openshift_console_url%
+:openshift_cluster_admin_password: %openshift_cluster_admin_password%
+:rhodh_dashboard: %rhodh_dashboard%
+:gitea_console_url: %gitea_console_url%
+:gitea_admin_username: %gitea_admin_username%
+:gitea_admin_password: %gitea_admin_password%
+
 # Segment 2 Section 3: AI/ML integration
 
 * Key takeaways from this section are:
@@ -49,9 +58,9 @@ integrated with OpenShift.
 
 With that foundation in place, let’s explore the demo.
 
-Login to OCP Console of `OHC AWS Dev Cluster A` {{ openshift_console_url }} to get the Application URL using your Segment 2 login details.
+Login to OCP Console of `OHC AWS Dev Cluster A` {openshift_console_url} to get the Application URL using your Segment 2 login details.
 Same information will be provided to you via email.
-Select `htpass_provider` and then login using `admin` username and {{ openshift_cluster_admin_password }} as per your environment details.
+Select `htpass_provider` and then login using `admin` username and {openshift_cluster_admin_password} as per your environment details.
 Select Networking -> Routes for `cicd` project.
 and
 Select the URL for `object-detection-app-git`.
@@ -79,7 +88,7 @@ with OpenShift Data Science. An example of this is the Seldon Deploy integration
 you can deploy that today to meet their needs, but still integrate with OpenShift Data Science to provide a platform with
 resources for them to experiment and develop the models.
 
-Let’s start by launching JupyterHub. You open the RHODS Dashboard URL {{ rhodh_dashboard }} with `admin` user and password of `openshift admin console`.
+Let’s start by launching JupyterHub. You open the RHODS Dashboard URL {rhodh_dashboard} with `admin` user and password of `openshift admin console`.
 Once you are in Red Hat OpenShift Data Science Dashboard, `Launch Application` for JupyterHub which is the only Enabled application.
 You can browse through the ecosystem by checking Explore tab on the left side of your screen. Come back to Enabled application.
 Since you have launched application, it will open another browser tab where you login using the same username/password which you used earlier.
@@ -100,8 +109,8 @@ by selecting a small one.
 image::images/Jupyterhub-start-server.png[]
 
 After a few moments, the container image will deploy and we can launch the JupyterHub interface. Let’s clone a repo with the code we’ll
-be using for the model. You can clone your gitea repo - `arc-model`. Login to the gitea url {{ gitea_console_url }} provided in your environment
-with {{ gitea_admin_username }} as the user and {{ gitea_admin_password }} as the password, select `dev-user` on the left of your screen
+be using for the model. You can clone your gitea repo - `arc-model`. Login to the gitea url {gitea_console_url} provided in your environment
+with {gitea_admin_username} as the user and {gitea_admin_password} as the password, select `dev-user` on the left of your screen
 to access all the repositories and get the git url for `arc-model`.
 
 image::images/git-clone.png[]
