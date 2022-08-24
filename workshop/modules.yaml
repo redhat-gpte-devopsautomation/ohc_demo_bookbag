@@ -6,3 +6,12 @@ modules:
   02-openshift-anywhere:
     name: 02 Openshift Anywhere
     exit_sign: Finish Workshop
+  03-app-modernization:
+    name: 03 Appliation Modernization
+    exit_sign: Finish Workshop
+  04-app-dev-experience:
+    name: 04 Developer Experience
+    exit_sign: Finish Workshop
+  05-aiml-integration:
+    name: 05 AIML Integration
+    exit_sign: Finish Workshop

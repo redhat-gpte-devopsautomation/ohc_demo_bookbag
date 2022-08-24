@@ -1,0 +1,38 @@
+# Segment 2 Section 2: Developer experience
+
+* Key takeaways from this section are listed below:
+** Removing toil from developer workflows enables them to be more efficient, OpenShift features and capabilities allow developers to focus on code, not the platform, with integration and automation for each step in the path to production
+** OpenShift and Red Hat Runtimes work together to provide a robust platform for developers and applications, reducing the effort needed for their inner loop activities
+** OpenShift Pipelines help automate app delivery accelerating the time to production
+
+Once the application has been modernized to the point of deploying into OpenShift, even if not all of the issues have been addressed and the application isn’t fully cloud-native,
+we can really begin to make use of the developer tools available with OpenShift.
+
+< demo, developer console >
+
+Jumping ahead in time, several aspects of our application are now running in OpenShift with much of the modernization work completed.
+The developer perspective of the OpenShift console shows a high-level diagram of the component architecture.
+This is effectively the same as the end-goal diagram we saw on the previous lab (Segment 2 Section 1), just rotated 90 degrees with the gateway service on the
+left side and the inventory service on the right.
+
+If we open the URL for the gateway component, we see the web page for our retail store, a straightforward Node.js application that communicates with the other application components using Kubernetes paradigms.
+You’ll also notice that the inventory service has been refactored to use Quarkus, a cloud-native Java implementation.
+
+The combination of containerization, deployed to OpenShift, using Quarkus gives us powerful capabilities to accelerate developer inner loop activities.
+We’re going to take a deeper look into what that looks like for a developer and how it can make their inner loop activities easier.
+This demo will use a browser-based IDE to make a code change, test it, then commit and push that change to the application repo. Once the commit is reviewed and approved, the outer loop, facilitated by OpenShift Pipelines,
+will automatically build, test, and deploy the change into the staging, or production if we choose, the environment.
+
+< demo, inner loop >
+
+We’re using a web-based IDE to make things easier to demo, but VScode, IntelliJ, and others running on the desktop can be used with the same functionality, ensuring developers can continue to use the tools they’re familiar and comfortable with.
+
+In the IDE we’ve checked out and are editing the inventory service code file. Within this window, we also have a preview of the application and a terminal running Maven. All of this is running live and reflects the current code revision seen in the IDE.
+
+Let’s make a code change. We’ll uncomment some additions to the code and save the file. Maven detects the change and automatically rebuilds the app and updates the preview for us. This combination of tools and automation dramatically shortens the path
+that I need to take when doing testing for my code contributions and it can be further automated with code tests and other functions depending on the tool chain used.
+
+Once we’re satisfied with the new code, let’s commit it. Using Git integration in the IDE, let’s add a commit message and push to the repo. Via webhooks, the Git repo has been integrated with an OpenShift Pipeline build process.
+When the commit is received, a Pipeline run will begin, which will build the application, run tests, update manifests and images, and, finally - assuming everything passed - will issue a pull request for the production environment.
+This gives us a gating factor for review and approval of the changes before they reach production. But, I don’t have to do that, the configuration is infinitely customizable to meet your organization's requirements and processes
+for controlling the flow from dev to test to production.

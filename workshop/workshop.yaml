@@ -4,3 +4,6 @@ modules:
   activate:
     - 01-openshift-anywhere
     - 02-openshift-anywhere
+    - 03-app-modernization
+    - 04-app-dev-experience
+    - 05-aiml-integration
