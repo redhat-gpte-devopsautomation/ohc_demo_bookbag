@@ -1,11 +1,11 @@
 :guid: %guid%
 :ocp_username: %ocp_username%
-:openshift_console_url: %openshift_console_url%
-:openshift_cluster_admin_password: %openshift_cluster_admin_password%
-:rhodh_dashboard: %rhodh_dashboard%
-:gitea_console_url: %gitea_console_url%
-:gitea_admin_username: %gitea_admin_username%
-:gitea_admin_password: %gitea_admin_password%
+:openshift_console_url: %aws_dev_a_provision_data.openshift_console_url%
+:openshift_cluster_admin_password: %aws_dev_a_provision_data.openshift_cluster_admin_password%
+:rhodh_dashboard: %aws_dev_a_provision_data.rhodh_dashboard%
+:gitea_console_url: %aws_dev_a_provision_data.gitea_console_url%
+:gitea_admin_username: %aws_dev_a_provision_data.gitea_admin_username%
+:gitea_admin_password: %aws_dev_a_provision_data.gitea_admin_password%
 
 # Segment 2 Section 3: AI/ML integration
 
