@@ -8,7 +8,7 @@
 :gitea_console_url: %aws_dev_a_provision_data.gitea_console_url%
 :gitea_admin_username: %aws_dev_a_provision_data.gitea_admin_username%
 :gitea_admin_password: %aws_dev_a_provision_data.gitea_admin_password%
-:testvalue: %aws_dev_a_provision_data{'ac_password'}%
+:testvalue: %aws_dev_a_provision_data: {'ac_password'}%
 
 
 == Script for Segment 1 Part 1
