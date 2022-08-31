@@ -9,6 +9,14 @@
 
 == Script for Segment 1 Part 1
 
+ %guid%
+ %ocp_username%
+ %aws_hub_provision_data.bastion_public_hostname%
+ %aws_hub_provision_data.bastion_username%
+ %aws_hub_provision_data.bastion_password%
+ %aws_hub_provision_data.openshift_console_url%
+ %aws_hub_provision_data.openshift_cluster_admin_password%
+
 Hi, I'm <name>, <role> `{ocp_username}` in <organization>
 
 In this demo we're going to do the installation of the OpenShift Container Platform to act as a basis for a new OCP fleet across cloud provders.  Coming soon, we'll be establishing this basis on-premises with VMware Vsphere as the virtual infrastructure.
