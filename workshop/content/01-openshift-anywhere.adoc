@@ -34,6 +34,14 @@ Before we dive in, I do want to point out we do have full stack automation using
 
 image:images/s1_p1_installation_options.png
 
+a link
+
+link:%slides_url%
+
+a slides box
+
+[Slide 1](%slides_url%)
+
 Although the majority of our installation is actually still follow a preexisting infrastructure, the box in the middle.
 
 When you get into a data center there's a lot of existing, very heterogeneous infrastructure, hardware, networking and those sorts of things that need to be supported.
