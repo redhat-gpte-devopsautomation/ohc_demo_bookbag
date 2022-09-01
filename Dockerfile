@@ -13,6 +13,7 @@ RUN rm -rf /tmp/src/.git* && \
     chmod -R g+w /tmp/src
 
 ENV TERMINAL_TAB=
+ENV ENABLE_SLIDES='true'
 
 USER 1001
 
