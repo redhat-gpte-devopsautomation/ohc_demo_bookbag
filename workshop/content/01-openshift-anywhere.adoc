@@ -60,7 +60,9 @@ We're going to start where most of our sysadmins, an OpenShift admins will be fa
 
 Let's connect to the Linux command line of our internal Hub cluster where we normally create more OpenShift clsuters.
 
-[source, bash]
+Add execution ->
+
+[source,bash,role=execute]
 ----
 ssh %aws_hub_provision_data.bastion_ssh_user_name%@%aws_hub_provision_data.bastion_public_hostname%
 ----
