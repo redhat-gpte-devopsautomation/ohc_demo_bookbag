@@ -16,6 +16,7 @@
  %aws_hub_provision_data.bastion_ssh_password%
  %aws_hub_provision_data.openshift_console_url%
  %aws_hub_provision_data.openshift_cluster_admin_password%
+ %slides_url%
 
 === Introduction
 
