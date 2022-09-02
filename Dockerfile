@@ -14,6 +14,7 @@ RUN rm -rf /tmp/src/.git* && \
 
 ENV TERMINAL_TAB=
 ENV ENABLE_SLIDES='true'
+ENV SLIDES_LINK='slides/index.html'
 
 USER 1001
 

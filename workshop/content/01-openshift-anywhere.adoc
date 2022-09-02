@@ -69,7 +69,7 @@ ssh %aws_hub_provision_data.bastion_ssh_user_name%@%aws_hub_provision_data.basti
 
 NOTE: You can copy the password value by clicking the icon on the right of the block.
 .Password
-[source,role=copy]
+[source,role=execute]
 ----
 %aws_hub_provision_data.bastion_ssh_password%
 ----
