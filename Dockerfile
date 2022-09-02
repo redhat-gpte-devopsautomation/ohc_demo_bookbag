@@ -3,8 +3,6 @@ FROM quay.io/openshifthomeroom/workshop-dashboard:5.0.0
 USER root
 
 COPY . /tmp/src
-COPY index.html /opt/app-root/workshop/slides/
-
 
 RUN cp /tmp/src/dashboard/gateway/views/dashboard.pug /opt/workshop/gateway/views/
 RUN cp /tmp/src/dashboard/gateway/routes/dashboard.js /opt/workshop/gateway/routes/
