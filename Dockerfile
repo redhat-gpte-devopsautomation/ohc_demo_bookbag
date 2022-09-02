@@ -4,9 +4,9 @@ USER root
 
 COPY . /tmp/src
 
-#RUN cp /tmp/src/dashboard/gateway/views/dashboard.pug /opt/workshop/gateway/views/
-#RUN cp /tmp/src/dashboard/gateway/routes/dashboard.js /opt/workshop/gateway/routes/
-#URN cp /tmp/src/dashboard/renderer/config.js /opt/workshop/renderer/
+# RUN cp /tmp/src/dashboard/gateway/views/dashboard.pug /opt/workshop/gateway/views/
+# RUN cp /tmp/src/dashboard/gateway/routes/dashboard.js /opt/workshop/gateway/routes/
+# RUN cp /tmp/src/dashboard/renderer/config.js /opt/workshop/renderer/
 
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
