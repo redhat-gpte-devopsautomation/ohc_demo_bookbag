@@ -36,7 +36,7 @@ module.exports = function(app, prefix) {
 
     var slides_dir = process.env.SLIDES_DIR;
 
-    router.locals.with_slides = false;
+    router.locals.with_slides = true;
 
     if (slides_dir) {
         if (fs.existsSync(slides_dir + '/index.html')) {
