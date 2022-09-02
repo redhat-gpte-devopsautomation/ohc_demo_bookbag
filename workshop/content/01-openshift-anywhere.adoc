@@ -36,11 +36,11 @@ image:images/s1_p1_installation_options.png
 
 a link
 
-link:%slides_url%
+link:%slides_url%[Slides]
 
-a slides box
 
-[Slide 1](%slides_url%)
+
+
 
 Although the majority of our installation is actually still follow a preexisting infrastructure, the box in the middle.
 
@@ -60,17 +60,19 @@ We're going to start where most of our sysadmins, an OpenShift admins will be fa
 
 Let's connect to the Linux command line of our internal Hub cluster where we normally create more OpenShift clsuters.
 
-Add execution ->
+NOTE: To execute the following command, press the play button to the right of the command.
 
 [source,bash,role=execute]
 ----
 ssh %aws_hub_provision_data.bastion_ssh_user_name%@%aws_hub_provision_data.bastion_public_hostname%
 ----
-NOTE: password: %aws_hub_provision_data.bastion_ssh_password%
-[subs=attributes]
-++++
-<a href="#" onclick="parent.send_to_terminal('ssh %aws_hub_provision_data.bastion_ssh_user_name%@%aws_hub_provision_data.bastion_public_hostname%', 1); return false;">Run it!</a>
-++++
+
+NOTE: You can copy the password value by clicking the icon on the right of the block.
+.Password
+[source,role=copy]
+----
+%aws_hub_provision_data.bastion_ssh_password%
+----
 
 So I have a environment here, a Linux shell.
 I want to show you what it looks like to actually deploy via UPI, user provision infrastructure.
@@ -81,27 +83,19 @@ It was produced by running our first command and answering some basic questions 
 
 // . Step 1: Open your OpenShift Console URL link:{openshift_console_url}[OpenShift Console].
 
-[source, subs="attributes", bash]
+[source, subs="attributes", bash, role=execute]
 ----
 openshift-install create install-config --dir $HOME/cluster-{guid}
 ----
-[subs=attributes]
-++++
-<a href="#" onclick="parent.send_to_terminal('openshift-install create install-config --dir $HOME/cluster-{guid}', 1); return false;">Run it!</a>
-++++
 
 It's also available in rich detail in the OpenShift documentation, for all the many infrastructures we support.
 This is really the majority of what the installation gets powered off of.
 So this install config YAML file had some details in it.
 
-[source, subs="attributes", bash]
+[source, subs="attributes", bash, role=execute]
 ----
 cat $HOME/cluster-{guid}/install-config.yaml
 ----
-[subs=attributes]
-++++
-<a href="#" onclick="parent.send_to_terminal('cat $HOME/cluster-{guid}/install-config.yaml', 1); return false;">Run it!</a>
-++++
 
 This is probably the most challenging part to setup is this install config YAML file and get it correct.
 You need to talk to various teams like in this case, we're deploying on AWS, your administrators, your networking team, your DNS team, and so on to understand and coordinate with them what you can use inside those environments to deploy your OpenShift cluster.
@@ -115,14 +109,10 @@ So this second step your're just going to run the various commands to OpenShift 
 I run
 
 +
-[source, subs="attributes", bash]
+[source, subs="attributes", bash, role=execute]
 ----
 # openshift-install create cluster --dir $HOME/cluster-{guid}
 ----
-[subs=attributes]
-++++
-<a href="#" onclick="parent.send_to_terminal('openshift-install create cluster --dir $HOME/cluster-{guid}', 1); return false;">Run it!</a>
-++++
 
 All I do is really just wait.
 Behind the scenes, the OpenShift installer will create a Bootstrap VM for the cluster by gathering all the resources necessary to do the install.
@@ -135,14 +125,10 @@ It takes roughly 20 minutes for this to complete.
 
 Rather than wait for that, this other window here, we have the output from another installation when complete.
 
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes", role=execute]
 ----
 tail $HOME/cluster-{aws_dev_a_provision_data.guid}/openshift-installation.log
 ----
-[subs=attributes]
-++++
-<a href="#" onclick="parent.send_to_terminal('tail $HOME/cluster-{aws_dev_a_provision_data.guid}/openshift-installation.log', 1); return false;">Run it!</a>
-++++
 
 So you can see here, it's given you credentials and URLs to access the cluster.
 
